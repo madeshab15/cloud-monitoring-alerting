@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Monitoring Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Cloud Monitoring</h1>
+      <p>System health & automated alerting</p>
+    </div>
+    <div class="health-badge"><span id="healthDot"></span><span id="healthText">Checking...</span></div>
+  </header>
+
+  <main class="container">
+    <section class="cards">
+      <article class="card metric-card"><div class="label">CPU Usage</div><div class="metric-row"><strong id="cpu">--</strong><span>%</span></div><div class="bar"><i id="cpuBar"></i></div><small>Alert above 80%</small></article>
+      <article class="card metric-card"><div class="label">Memory Usage</div><div class="metric-row"><strong id="memory">--</strong><span>%</span></div><div class="bar"><i id="memoryBar"></i></div><small>Alert above 85%</small></article>
+      <article class="card metric-card"><div class="label">Disk Usage</div><div class="metric-row"><strong id="disk">--</strong><span>%</span></div><div class="bar"><i id="diskBar"></i></div><small>Alert above 90%</small></article>
+      <article class="card metric-card"><div class="label">Running Processes</div><div class="metric-row"><strong id="processes">--</strong></div><small>Current process count</small></article>
+    </section>
+
+    <section class="grid">
+      <article class="card chart-card">
+        <div class="section-head"><div><h2>Resource Overview</h2><p>Latest system utilization</p></div><span class="updated" id="updated">Waiting for data</span></div>
+        <div class="chart"><div class="chart-line" id="chartLine"></div><div class="chart-axis"><span>0%</span><span>50%</span><span>100%</span></div></div>
+      </article>
+      <article class="card alerts-card">
+        <div class="section-head"><div><h2>Active Alerts</h2><p>Prometheus threshold status</p></div></div>
+        <div id="alerts" class="alert-list"><div class="empty">No alerts</div></div>
+      </article>
+    </section>
+
+    <section class="card system-card">
+      <div class="section-head"><div><h2>Monitoring Stack</h2><p>Services used by this project</p></div></div>
+      <div class="stack">
+        <div><b>FastAPI</b><span>Metrics API</span></div>
+        <div><b>Prometheus</b><span>Metrics collection</span></div>
+        <div><b>Alertmanager</b><span>Alert routing</span></div>
+        <div><b>Grafana</b><span>Visualization</span></div>
+        <div><b>Docker</b><span>Containerization</span></div>
+      </div>
+    </section>
+    <footer>Auto-refreshes every 10 seconds · Cloud Monitoring & Alerting System</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

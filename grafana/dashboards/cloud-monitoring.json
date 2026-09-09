@@ -1,0 +1,14 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "panels": [
+    {"type":"timeseries","title":"CPU Usage %","gridPos":{"h":8,"w":12,"x":0,"y":0},"targets":[{"expr":"system_cpu_percent","legendFormat":"CPU %"}]},
+    {"type":"timeseries","title":"Memory Usage %","gridPos":{"h":8,"w":12,"x":12,"y":0},"targets":[{"expr":"system_memory_percent","legendFormat":"Memory %"}]},
+    {"type":"timeseries","title":"Disk Usage %","gridPos":{"h":8,"w":12,"x":0,"y":8},"targets":[{"expr":"system_disk_percent","legendFormat":"Disk %"}]},
+    {"type":"timeseries","title":"Running Processes","gridPos":{"h":8,"w":12,"x":12,"y":8},"targets":[{"expr":"system_process_count","legendFormat":"Processes"}]}
+  ],
+  "schemaVersion": 39,
+  "title": "Cloud Monitoring Overview",
+  "time": {"from":"now-15m","to":"now"},
+  "timezone":"browser"
+}

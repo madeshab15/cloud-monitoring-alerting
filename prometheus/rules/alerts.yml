@@ -1,0 +1,29 @@
+groups:
+  - name: system-alerts
+    rules:
+      - alert: HighCPU
+        expr: system_cpu_percent > 80
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: High CPU usage
+          description: CPU usage is above 80% for more than 30 seconds.
+
+      - alert: HighMemory
+        expr: system_memory_percent > 85
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: High memory usage
+          description: Memory usage is above 85% for more than 30 seconds.
+
+      - alert: HighDisk
+        expr: system_disk_percent > 90
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: High disk usage
+          description: Disk usage is above 90% for more than 30 seconds.

@@ -1,0 +1,5 @@
+const $=id=>document.getElementById(id);
+function setMetric(id,bar,value){$(id).textContent=Number(value).toFixed(1);$(bar).style.width=Math.min(Number(value),100)+'%'}
+function render(data){const m=data.metrics||{};setMetric('cpu','cpuBar',m.cpu_percent||0);setMetric('memory','memoryBar',m.memory_percent||0);setMetric('disk','diskBar',m.disk_percent||0);$('processes').textContent=m.process_count??'--';$('updated').textContent='Updated '+new Date().toLocaleTimeString();const alerts=data.alerts||[];$('alerts').innerHTML=alerts.length?alerts.map(a=>`<div class="alert">${a.replaceAll('_',' ')}</div>`).join(''):'<div class="empty">✓ No active alerts</div>';const avg=Math.max(m.cpu_percent||0,m.memory_percent||0,m.disk_percent||0);$('chartLine').style.height=Math.min(avg,100)+'%';$('healthText').textContent=alerts.length?'Attention required':'All systems healthy';$('healthDot').style.background=alerts.length?'#c56a6a':'#4d9b6d'}
+async function load(){try{const r=await fetch('/status');if(!r.ok)throw Error();render(await r.json())}catch(e){$('healthText').textContent='API unavailable';$('healthDot').style.background='#c56a6a'}}
+load();setInterval(load,10000);
