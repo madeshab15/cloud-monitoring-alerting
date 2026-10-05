@@ -1,4 +1,4 @@
-# Cloud Monitoring & Automated Alerting System — Interview Ready
+# Cloud Monitoring & Automated Alerting System 
 
 A beginner-friendly DevOps/cloud monitoring project that collects system metrics, exposes them to Prometheus, visualizes them in Grafana, and evaluates threshold alerts through Prometheus Alertmanager.
 
@@ -70,3 +70,26 @@ The application does not send email/SMS directly. Prometheus evaluates the rules
 ## Custom Frontend Dashboard
 
 The project includes a clean, responsive white dashboard served by FastAPI at `http://localhost:8000/`. It displays CPU, memory, disk, running processes, active alerts, and the monitoring stack. The dashboard refreshes system status every 10 seconds and is intentionally simple for demonstration and interview use.
+
+### run cases
+
+#to check prometheus is running use 
+up
+#to see all available metric names use
+{__name__=~".+"}
+#Scrape meaning : Prometheus collects/reads metrics from a monitoring target at regular intervals.
+scrape_samples_scraped
+#for cpu metrics
+process_cpu_seconds_total
+#this gives accurate cpu usage percentage
+rate(process_cpu_seconds_total[5m]) * 100
+#for memory metrics
+process_resident_memory_bytes
+#for memory usage
+process_resident_memory_bytes / 1024 / 1024
+
+
+
+grafana
+email:admin
+password:admin123
